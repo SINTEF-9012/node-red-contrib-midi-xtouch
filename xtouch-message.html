@@ -1,0 +1,148 @@
+<script type="text/javascript">
+    RED.nodes.registerType('xtouch-message',{
+        category: 'midi',
+        color: '#FFCC66',
+        defaults: {
+            name: {value:""},
+            control: {value:"topic"},
+        },
+        inputs:1,
+        outputs:1,
+        paletteLabel: "XTouch Message",
+        icon: "xtouch.png",
+        label: function() {
+            return this.name||"Message";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="xtouch-message">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+    <div class="form-row" id="xtouch-control-for">
+        <label for="node-input-control"><i class="fa fa-sliders"></i> Control</label>
+        <select id="node-input-control">
+          <option value="topic">From Topic</option>
+          <option value="fader_1">Fader 1</option>
+          <option value="fader_2">Fader 2</option>
+          <option value="fader_3">Fader 3</option>
+          <option value="fader_4">Fader 4</option>
+          <option value="fader_5">Fader 5</option>
+          <option value="fader_6">Fader 6</option>
+          <option value="fader_7">Fader 7</option>
+          <option value="fader_main">Fader Main</option>
+          <option value="knob_1">Knob 1</option>
+          <option value="knob_2">Knob 2</option>
+          <option value="knob_3">Knob 3</option>
+          <option value="knob_4">Knob 4</option>
+          <option value="knob_5">Knob 5</option>
+          <option value="knob_6">Knob 6</option>
+          <option value="knob_7">Knob 7</option>
+          <option value="knob_8">Knob 8</option>
+          <option value="knob_9">Knob 9</option>
+          <option value="knob_10">Knob 10</option>
+          <option value="knob_11">Knob 11</option>
+          <option value="knob_12">Knob 12</option>
+          <option value="knob_13">Knob 13</option>
+          <option value="knob_14">Knob 14</option>
+          <option value="knob_15">Knob 15</option>
+          <option value="knob_16">Knob 16</option>
+          <option value="select_button_1">Select Button 1</option>
+          <option value="select_button_2">Select Button 2</option>
+          <option value="select_button_3">Select Button 3</option>
+          <option value="select_button_4">Select Button 4</option>
+          <option value="select_button_5">Select Button 5</option>
+          <option value="select_button_6">Select Button 6</option>
+          <option value="select_button_7">Select Button 7</option>
+          <option value="select_button_8">Select Button 8</option>
+          <option value="select_button_9">Select Button 9</option>
+          <option value="select_button_10">Select Button 10</option>
+          <option value="select_button_11">Select Button 11</option>
+          <option value="select_button_12">Select Button 12</option>
+          <option value="select_button_13">Select Button 13</option>
+          <option value="select_button_14">Select Button 14</option>
+          <option value="select_button_15">Select Button 15</option>
+          <option value="select_button_16">Select Button 16</option>
+          <option value="select_button_17">Select Button 17</option>
+          <option value="select_button_18">Select Button 18</option>
+          <option value="select_button_19">Select Button 19</option>
+          <option value="select_button_20">Select Button 20</option>
+          <option value="select_button_21">Select Button 21</option>
+          <option value="select_button_22">Select Button 22</option>
+          <option value="select_button_23">Select Button 23</option>
+          <option value="select_button_24">Select Button 24</option>
+          <option value="fader_select_button_1">Fader Select Button 1</option>
+          <option value="fader_select_button_2">Fader Select Button 2</option>
+          <option value="fader_select_button_3">Fader Select Button 3</option>
+          <option value="fader_select_button_4">Fader Select Button 4</option>
+          <option value="fader_select_button_5">Fader Select Button 5</option>
+          <option value="fader_select_button_6">Fader Select Button 6</option>
+          <option value="fader_select_button_7">Fader Select Button 7</option>
+          <option value="fader_select_button_8">Fader Select Button 8</option>
+          <option value="fader_select_button_main">Fader Select Button Main</option>
+          <option value="rewind_button">Rewind Button</option>
+          <option value="fast_forward_button">Fast Forward Button</option>
+          <option value="loop_button">Loop Button</option>
+          <option value="record_button">Record Button</option>
+          <option value="stop_button">Stop Button</option>
+          <option value="play_button">Play Button</option>
+        </select>
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="xtouch-message">
+    <p>Easily generate a midi message for the Behringer X-Touch Compact.</p>
+
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt>payload
+                <span class="property-type">float/boolean</span>
+                <dd> A [0-1] <code>float</code> or a <code>boolean</code>.</dd>
+            </dt>
+            <dt class="optional">topic
+                <span class="property-type">string</span>
+                <dd> A string identifying the controller. The controller can also be configured in the node properties.
+                    <p>List of accepted topics:</p>
+                    <ul>
+                    <li>fader_1</li>
+                    <li>…</li>
+                    <li>fader_8</li>
+                    <li>fader_main</li>
+                    <br> 
+                    <li>knob_1</li>
+                    <li>…</li>
+                    <li>knob_16</li>
+                    <br> 
+                    <li>select_button_1</li>
+                    <li>…</li>
+                    <li>select_button_24</li>
+                    <br> 
+                    <li>fader_select_button_1</li>
+                    <li>…</li>
+                    <li>fader_select_button_8</li>
+                    <li>fader_select_button_main</li>
+                    <br> 
+                    <li>rewind_button</li>
+                    <li>fast_forward_button</li>
+                    <li>loop_button</li>
+                    <li>record_button</li>
+                    <li>stop_button</li>
+                    <li>play_button</li>
+                </ul>
+                </dd>
+            </dt>
+        </dl>
+
+    <h3>Outputs</h3>
+
+    <ol class="node-ports">
+        <dl class="message-properties">
+            <dt class="optional">payload
+                <span class="property-type">array</span>
+                <dd> a 3 integers array representing the raw midi message. Example: <code>[144, 28, 127]</code></dd>
+            </dt>
+        </dl>
+    </ol>
+</script>

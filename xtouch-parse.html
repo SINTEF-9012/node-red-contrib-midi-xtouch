@@ -1,0 +1,88 @@
+<script type="text/javascript">
+    RED.nodes.registerType('xtouch-parse',{
+        category: 'midi',
+        color: '#FFCC66',
+        defaults: {
+            name: {value:""},
+        },
+        inputs:1,
+        outputs:1,
+        paletteLabel: "XTouch Parse",
+        icon: "xtouch.png",
+        label: function() {
+            return this.name||"Parse";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="xtouch-parse">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Name">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="xtouch-parse">
+    <p>Convert a midi message from Behringer X-Touch Compact to JSON.</p>
+
+    <p><em>Non-parsed messages are ignored.</em></p>
+
+    <h3>Inputs</h3>
+        <dl class="message-properties">
+            <dt class="optional">payload
+                <span class="property-type">array</span>
+                <dd> a 3 integers array representing the raw midi message. Example: <code>[144, 28, 127]</code></dd>
+            </dt>
+            <dt class="optional">midi.raw
+                <span class="property-type">array</span>
+                <dd> a 3 integers array representing the raw midi message.</dd>
+            </dt>
+        </dl>
+
+    <h3>Outputs</h3>
+
+    <ol class="node-ports">
+        <dl class="message-properties">
+            <dt>topic <span class="property-type">string</span></dt>
+            <dd>ID of the midi message.
+                <ul>
+                    <li>fader_move_1</li>
+                    <li>…</li>
+                    <li>fader_move_8</li>
+                    <li>fader_move_main</li>
+                    <br> 
+                    <li>fader_touch_1</li>
+                    <li>…</li>
+                    <li>fader_touch_8</li>
+                    <li>fader_touch_main</li>
+                    <br> 
+                    <li>knob_turn_1</li>
+                    <li>…</li>
+                    <li>knob_turn_16</li>
+                    <br> 
+                    <li>knob_push_1</li>
+                    <li>…</li>
+                    <li>knob_push_16</li>
+                    <br> 
+                    <li>select_button_1</li>
+                    <li>…</li>
+                    <li>select_button_24</li>
+                    <br> 
+                    <li>fader_select_button_1</li>
+                    <li>…</li>
+                    <li>fader_select_button_8</li>
+                    <li>fader_select_button_main</li>
+                    <br> 
+                    <li>rewind_button</li>
+                    <li>fast_forward_button</li>
+                    <li>loop_button</li>
+                    <li>record_button</li>
+                    <li>stop_button</li>
+                    <li>play_button</li>
+                </ul>
+            </dd>
+            <dt>payload <span class="property-type">float/boolean</span></dt>
+            <dd>Updated value. A [0-1] <code>float</code> for faders and knobs, and a <code>boolean</code> for others.</dd>
+        </dl>
+    </ol>
+</script>
