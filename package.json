@@ -1,12 +1,16 @@
 {
   "name": "node-red-contrib-midi-xtouch",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Easily parse and generate midi messages for the Behringer X-Touch Compact.",
   "author": "Antoine Pultier",
   "license": "Apache-2.0",
   "keywords": [
     "node-red"
   ],
+  "repository"   : {
+      "type":"git",
+      "url":"https://github.com/SINTEF-9012/node-red-contrib-midi-xtouch.git"
+  },
   "node-red": {
     "nodes": {
       "xtouch-parse": "xtouch-parse.js",
