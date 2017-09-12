@@ -72,6 +72,7 @@ module.exports = function(RED) {
       }
 
       node.send({
+        topic: control,
         payload: [code, id, value]
       });
 
