@@ -11,7 +11,12 @@
         paletteLabel: "XTouch Message",
         icon: "xtouch.png",
         label: function() {
-            return this.name||"Message";
+            if (this.name !== "") return this.name;
+            if (this.control === "topic") return "Convert";
+
+            return this.control.replace(/^\w|\s\w|_\w/g, function (letter) {
+                return letter.toUpperCase().replace('_', ' ');
+            });
         }
     });
 </script>
@@ -32,6 +37,7 @@
           <option value="fader_5">Fader 5</option>
           <option value="fader_6">Fader 6</option>
           <option value="fader_7">Fader 7</option>
+          <option value="fader_7">Fader 8</option>
           <option value="fader_main">Fader Main</option>
           <option value="knob_1">Knob 1</option>
           <option value="knob_2">Knob 2</option>

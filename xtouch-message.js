@@ -62,7 +62,7 @@ module.exports = function(RED) {
           "play_button"].indexOf(control);
 
         if (index === -1) {
-          node.error("XTouch: The topic is not recognized as a valid control.");
+          node.error("XTouch: The topic is not recognized as a valid control: "+control);
           return;
         }
 
